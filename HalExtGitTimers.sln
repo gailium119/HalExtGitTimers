@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35219.272
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HalExtGitTimers", "HalExtGitTimers\HalExtGitTimers.vcxproj", "{3CEF2507-27F7-4669-B8EB-DF558E1DFCEB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Release|ARM = Release|ARM
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3CEF2507-27F7-4669-B8EB-DF558E1DFCEB}.Debug|ARM.ActiveCfg = Debug|ARM
+		{3CEF2507-27F7-4669-B8EB-DF558E1DFCEB}.Debug|ARM.Build.0 = Debug|ARM
+		{3CEF2507-27F7-4669-B8EB-DF558E1DFCEB}.Release|ARM.ActiveCfg = Release|ARM
+		{3CEF2507-27F7-4669-B8EB-DF558E1DFCEB}.Release|ARM.Build.0 = Release|ARM
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {20D56391-86FA-4C24-91F0-214BC7E04BBF}
+	EndGlobalSection
+EndGlobal

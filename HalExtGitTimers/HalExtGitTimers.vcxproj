@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM">
+      <Configuration>Release</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3CEF2507-27F7-4669-B8EB-DF558E1DFCEB}</ProjectGuid>
+    <TemplateGuid>{dd38f7fc-d7bd-488b-9242-7d8754cde80d}</TemplateGuid>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <Configuration>Debug</Configuration>
+    <Platform Condition="'$(Platform)' == ''">Win32</Platform>
+    <RootNamespace>HalExtGitTimers</RootNamespace>
+    <ProjectName>HalExtGitTimers</ProjectName>
+    <WindowsTargetPlatformVersion>$(LatestTargetPlatformVersion)</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
+    <TargetVersion>Windows10</TargetVersion>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <DriverType>WDM</DriverType>
+    <DriverTargetPlatform>Universal</DriverTargetPlatform>
+    <Driver_SpectreMitigation>false</Driver_SpectreMitigation>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
+    <TargetVersion>Windows10</TargetVersion>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <DriverType>WDM</DriverType>
+    <DriverTargetPlatform>Universal</DriverTargetPlatform>
+    <Driver_SpectreMitigation>false</Driver_SpectreMitigation>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <DebuggerFlavor>DbgengKernelDebugger</DebuggerFlavor>
+    <TargetExt>.dll</TargetExt>
+    <TargetName>HalExtGitTimers</TargetName>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
+    <ApiValidator_Enable>false</ApiValidator_Enable>
+    <OutDir>$(SolutionDir)$(Platform)_$(ConfigurationName)\</OutDir>
+    <IntDir>$(SolutionDir)Temp\$(Platform)_$(ConfigurationName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <DebuggerFlavor>DbgengKernelDebugger</DebuggerFlavor>
+    <TargetExt>.dll</TargetExt>
+    <TargetName>HalExtGitTimers</TargetName>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
+    <ApiValidator_Enable>false</ApiValidator_Enable>
+    <OutDir>$(SolutionDir)Out\$(Platform)_$(ConfigurationName)\</OutDir>
+    <IntDir>$(SolutionDir)Temp\$(Platform)_$(ConfigurationName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <Link>
+      <AdditionalDependencies>ntoskrnl.lib;halextlib.lib;libcntpr.lib;bufferoverflowfastfailk.lib</AdditionalDependencies>
+      <ModuleDefinitionFile>HalExtGitTimers.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>$(DDK_LIB_PATH)</AdditionalLibraryDirectories>
+      <EntryPointSymbol>HalExtensionInit</EntryPointSymbol>
+      <OptimizeReferences>false</OptimizeReferences>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
+      <Version>6.2</Version>
+      <TreatLinkerWarningAsErrors>false</TreatLinkerWarningAsErrors>
+      <SubSystem>Native</SubSystem>
+      <MinimumRequiredVersion>6.2</MinimumRequiredVersion>
+    </Link>
+    <ClCompile>
+      <PreprocessorDefinitions>_ARM_;ARM;_USE_DECLSPECS_FOR_SAL=1;STD_CALL;HALEXT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+    </ClCompile>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Message>
+      </Message>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <!-- Specify fake placeholder so MSBUILD thinks that this process is always out of date and execute the custom build -->
+      <!-- Reference : https://blogs.msdn.microsoft.com/visualstudio/2010/04/26/custom-build-steps-tools-and-events/ -->
+      <Outputs>
+      </Outputs>
+    </CustomBuildStep>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <Link>
+      <AdditionalDependencies>ntoskrnl.lib</AdditionalDependencies>
+      <ModuleDefinitionFile>HalExtGitTimers.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>$(DDK_LIB_PATH)</AdditionalLibraryDirectories>
+      <EntryPointSymbol>HalExtensionInit</EntryPointSymbol>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <Version>6.2</Version>
+      <TreatLinkerWarningAsErrors>false</TreatLinkerWarningAsErrors>
+      <SubSystem>Native</SubSystem>
+      <MinimumRequiredVersion>6.2</MinimumRequiredVersion>
+    </Link>
+    <ClCompile>
+      <PreprocessorDefinitions>_ARM_;ARM;_USE_DECLSPECS_FOR_SAL=1;STD_CALL;HALEXT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <ControlFlowGuard>false</ControlFlowGuard>
+    </ClCompile>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Message>
+      </Message>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <!-- Specify fake placeholder so MSBUILD thinks that this process is always out of date and execute the custom build -->
+      <!-- Reference : https://blogs.msdn.microsoft.com/visualstudio/2010/04/26/custom-build-steps-tools-and-events/ -->
+      <Outputs>
+      </Outputs>
+    </CustomBuildStep>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Inf Include="HalExtGitTimers.inf" />
+  </ItemGroup>
+  <ItemGroup>
+    <FilesToPackage Include="$(TargetPath)" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="minhalext.c" />
+    <ClCompile Include="HalExtension.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HalExtGitTimers.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="HalExtGitTimers.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="minhalext.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <PkgGen Include="HalExtGitTimers.wm.xml">
+      <AdditionalOptions>/universalbsp</AdditionalOptions>
+      <SubType>Designer</SubType>
+    </PkgGen>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
