@@ -55,7 +55,7 @@
     <CustomBuildBeforeTargets>
     </CustomBuildBeforeTargets>
     <ApiValidator_Enable>false</ApiValidator_Enable>
-    <OutDir>$(SolutionDir)$(Platform)_$(ConfigurationName)\</OutDir>
+    <OutDir>$(SolutionDir)Out\$(Platform)_$(ConfigurationName)\</OutDir>
     <IntDir>$(SolutionDir)Temp\$(Platform)_$(ConfigurationName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
